@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text("Tako Dynamic Theme"),
           leading: BackButton(onPressed: () {}),
-          actions: [],
+          actions: const [],
         ),
         bottomNavigationBar: BottomNavigationBar(
           selectedFontSize: 0,
@@ -51,25 +51,25 @@ class MyApp extends StatelessWidget {
                         style: ThemeData.light().outlinedButtonTheme.style,
                         onPressed: () => TakoDynamicTheme.of(context)
                             .changeTheme(themeKey: "light"),
-                        child: Container(child: const Text("Light")),
+                        child: const Text("Light"),
                       )),
-                  Spacer(),
+                  const Spacer(),
                   Expanded(
                       flex: 3,
                       child: OutlinedButton(
                         style: ThemeData.light().outlinedButtonTheme.style,
                         onPressed: () => TakoDynamicTheme.of(context)
                             .changeTheme(themeKey: "dark"),
-                        child: Container(child: const Text("Dark")),
+                        child: const Text("Dark"),
                       )),
-                  Spacer(),
+                  const Spacer(),
                   Expanded(
                       flex: 3,
                       child: OutlinedButton(
                         style: ThemeData.light().outlinedButtonTheme.style,
                         onPressed: () => TakoDynamicTheme.of(context)
                             .changeTheme(themeKey: "night"),
-                        child: Container(child: const Text("Night")),
+                        child: const Text("Night"),
                       ))
                 ],
               ),
@@ -79,21 +79,21 @@ class MyApp extends StatelessWidget {
                   Expanded(
                     flex: 5,
                     child: ElevatedButton(
-                        onPressed: () {}, child: Text("Elevated")),
+                        onPressed: () {}, child: const Text("Elevated")),
                   ),
                   const Spacer(),
                   Expanded(
                       flex: 5,
                       child: OutlinedButton(
                         onPressed: () {},
-                        child: Text("Outline"),
+                        child: const Text("Outline"),
                       )),
                   const Spacer(),
                   Expanded(
                       flex: 5,
                       child: TextButton(
                         onPressed: () {},
-                        child: Text("Text"),
+                        child: const Text("Text"),
                       )),
                 ],
               ),
@@ -130,7 +130,7 @@ class MyApp extends StatelessWidget {
                 ],
               ),
               TextFormField(
-                decoration: InputDecoration(hintText: "Hint text"),
+                decoration: const InputDecoration(hintText: "Hint text"),
               ),
               const SizedBox(
                 height: 15,
@@ -138,7 +138,7 @@ class MyApp extends StatelessWidget {
               Slider(value: 0, onChanged: (value) {}),
               Slider(value: 0.5, onChanged: (value) {}),
               Slider(value: 1, onChanged: (value) {}),
-              CircularProgressIndicator(),
+              const CircularProgressIndicator(),
             ],
           ),
         ),

@@ -11,15 +11,11 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages). 
 -->
 
-<h1 align="center"> Tako Dynamic Theme </h1>
-
-<p align="center">Change theme in just a snap!</p>
+# Tako Dynamic Theme
 
 ## Demo
 
-<p>
-<img src="/demo.gif" width="250"> 
-</p>
+![demo](/demo-theme.gif "Demo")
 
 ## Getting started
 

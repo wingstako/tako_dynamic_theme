@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tako_dynamic_theme/src/shared_pref_service.dart';
 
 class TakoDynamicTheme extends InheritedWidget {
-  final _TakoDynamicThemeWidgetState data;
+  final TakoDynamicThemeWidgetState data;
 
   const TakoDynamicTheme({
     Key? key,
@@ -10,7 +10,7 @@ class TakoDynamicTheme extends InheritedWidget {
     required Widget child,
   }) : super(key: key, child: child);
 
-  static _TakoDynamicThemeWidgetState of(BuildContext context) {
+  static TakoDynamicThemeWidgetState of(BuildContext context) {
     return context.dependOnInheritedWidgetOfExactType<TakoDynamicTheme>()!.data;
   }
 
@@ -35,10 +35,10 @@ class TakoDynamicThemeWidget extends StatefulWidget {
   final Widget child;
 
   @override
-  State<TakoDynamicThemeWidget> createState() => _TakoDynamicThemeWidgetState();
+  State<TakoDynamicThemeWidget> createState() => TakoDynamicThemeWidgetState();
 }
 
-class _TakoDynamicThemeWidgetState extends State<TakoDynamicThemeWidget> {
+class TakoDynamicThemeWidgetState extends State<TakoDynamicThemeWidget> {
   ThemeData? themeData;
 
   Future? fInit;
@@ -51,6 +51,9 @@ class _TakoDynamicThemeWidgetState extends State<TakoDynamicThemeWidget> {
     fInit = _loadSharedPrefs();
   }
 
+  /// load saved theme key from shared preferences
+  ///
+  /// use fallbackTheme if key not exist
   Future _loadSharedPrefs() async {
     _prefs = SharedPrefService();
     await _prefs.loadInstance();
@@ -63,6 +66,7 @@ class _TakoDynamicThemeWidgetState extends State<TakoDynamicThemeWidget> {
     }
   }
 
+  /// change theme and persist theme if saveTheme = true
   void changeTheme({String themeKey = "", bool saveTheme = true}) {
     if (themeKey.isEmpty) return;
 
@@ -70,13 +74,13 @@ class _TakoDynamicThemeWidgetState extends State<TakoDynamicThemeWidget> {
       _prefs.saveThemeKey(themeKey);
     }
 
-    // do nothing if key not exist
+    /// do nothing if key not exist
     if (!widget.themeMap!.containsKey(themeKey)) return;
 
     setState(() {
       themeData = widget.themeMap![themeKey];
 
-      // workaround for active color of Brightness.dark not following colorscheme.secondary
+      /// workaround for active color of Brightness.dark not following colorscheme.secondary
       themeData = themeData!.copyWith(
           toggleableActiveColor:
               widget.themeMap![themeKey]!.colorScheme.secondary);
